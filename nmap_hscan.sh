@@ -12,7 +12,8 @@ OUTBASE=${OUTBASE:-"$HOME/scans"}
 
 read -rp "Engagement name (file prefix, e.g. 'lavelle-2025-08-27'): " NAME
 [[ -n "${NAME// }" ]] || die "Engagement name cannot be empty"
-NAME=$(echo "$NAME" | tr '[:space:]' '_' | tr -cd '[:alnum:]_-.')
+NAME=$(echo "$NAME" | tr '[:space:]' '_' | tr -cd 'A-Za-z0-9_.-')
+
 OUTDIR="$OUTBASE/$NAME"
 mkdir -p "$OUTDIR" || die "Cannot create output directory: $OUTDIR"
 
